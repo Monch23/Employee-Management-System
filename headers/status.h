@@ -2,17 +2,29 @@
 #define STATUS_H
 #include <string>
 
-namespace Roles {
-    std::string intern{"intern"};
-    std::string parttime{"part-time"};
-    std::string fulltime{"full-time"};
+enum class EmployeeRole { 
+    intern, 
+    junior, 
+    middle, 
+    senior 
 };
 
-namespace Status {
-    std::string active{"active"};
-    std::string inactive{"inactive"};
-    std::string vacation{"on vacation"};
-    std::string retired{"retired"};
+enum class EmploymentType { 
+    part_time,
+    full_time 
 };
+enum class EmployeeStatus { 
+    active, 
+    on_leave, 
+    inactive, 
+    retired 
+};
+
+namespace Rates {
+    extern double intern_rate;
+    extern double junior_rate;
+    extern double middle_rate;
+    extern double senior_rate;
+}
 
 #endif

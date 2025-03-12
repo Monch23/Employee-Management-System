@@ -1,22 +1,22 @@
-#include "fulltime.h"
+#include "employee.h"
+#include "parttime.h"
 
-FullTime::FullTime(const std::string &name, EmployeeRole emp_role) :
-        Employee(name, fulltime_fixed_salary, emp_role, EmploymentType::full_time) 
+PartTime::PartTime(const std::string &name, EmployeeRole emp_role) :
+        Employee(name, parttime_fixed_salary_in_hour, emp_role, EmploymentType::part_time)
 {
-    m_health_insurance = true;
-    m_gym_membership = true;
-    m_paid_time_off = false;
+    m_hours_worked = 0.0;
+    m_hours_wage = m_base_salary;
 }
 
-double FullTime::calculate_salary(void) const {
-    return m_base_salary * m_rate;
+double PartTime::calculate_salary(void) const {
+    return m_hours_worked * m_hours_wage * m_rate;
 }
 
-void FullTime::promote(void) {
+void PartTime::promote(void) {
     ++(*this);
 }
 
-void FullTime::display_details(void) const {
+void PartTime::display_details(void) const {
     std::cout << "Name: " << m_name << std::endl;
     std::cout << "ID: " << m_ID << std::endl;
     std::cout << "Base Salary: " << calculate_salary() << std::endl;
@@ -59,11 +59,14 @@ void FullTime::display_details(void) const {
 
 }
 
-void FullTime::send_to_paid_off(void) {
-    m_status = EmployeeStatus::on_leave;
-    m_paid_time_off = true;
+void PartTime::set_hours_worked(double hours) {
+    m_hours_worked = hours;
 }
 
-FullTime::~FullTime() {
+double PartTime::get_hours_worked(void) const {
+    return m_hours_worked;
+}
+
+PartTime::~PartTime() {
     Employee::~Employee();
 }

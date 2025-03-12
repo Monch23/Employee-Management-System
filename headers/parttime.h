@@ -1,17 +1,21 @@
 #ifndef PARTTIME_H
 #define PARTTIME_H
-#include "employee.h"
-
+// #include "employee.h"
+class Employee;
 
 class PartTime : public Employee {
     private:
-        int m_worked_time;
+        double m_hours_worked;
+        int m_hours_wage;    
     public:
-        PartTime(const std::string &name);
+        PartTime(const std::string &name, EmployeeRole emp_role);
+        ~PartTime();
         double calculate_salary(void) const override;
-        Employee *promote(void) override;
-        void performance_review(void) override;
-        Employee *update_role(const std::string &new_role) override;
+        void promote(void) override;
+        void display_details(void) const override;
+
+        void set_hours_worked(double hours);
+        double get_hours_worked(void) const;
 };
 
 #endif

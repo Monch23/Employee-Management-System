@@ -4,13 +4,19 @@
 #include <string>
 
 class FullTime : public Employee {
-    public:
-        FullTime(const std::string &name);
     private:
+        bool m_health_insurance;
+        bool m_gym_membership;
+        bool m_paid_time_off;
+    public:
+        FullTime(const std::string &name, EmployeeRole emp_role);
+        ~FullTime();
+    public:
         double calculate_salary(void) const override;
-        Employee *promote(void) override;
-        void performance_review(void) override;
-        Employee *update_role(const std::string &new_role) override;
+        void promote(void) override;
+        void display_details(void) const override;
+
+        void send_to_paid_off(void);
 };
 
 #endif
