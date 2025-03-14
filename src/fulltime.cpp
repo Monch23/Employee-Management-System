@@ -35,6 +35,9 @@ void FullTime::display_details(void) const {
             break;
         case (EmployeeRole::senior) :
             tmp = "Senior";
+            break;
+        default :
+            tmp = "Undefined";
     }
 
     std::cout << "Role: " << tmp << std::endl;
@@ -52,6 +55,9 @@ void FullTime::display_details(void) const {
             break;
         case (EmployeeStatus::retired) :
             tmp = "Retired";
+            break;
+        default :
+            tmp = "Undefined";
         }
 
     std::cout << "Status: " << tmp << std::endl;
