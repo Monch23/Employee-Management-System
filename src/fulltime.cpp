@@ -70,6 +70,4 @@ void FullTime::send_to_paid_off(void) {
     m_paid_time_off = true;
 }
 
-FullTime::~FullTime() {
-    Employee::~Employee();
-}
+FullTime::~FullTime() {}
