@@ -10,7 +10,7 @@ namespace Rates {
     double senior_rate = 2.0;
 }
 
-int Employee::m_unique_IDs = 999;
+std::atomic<int> Employee::m_unique_IDs = 999;
 
 Employee::Employee(const std::string &name, double base_salary, EmployeeRole role, EmploymentType emp_type) :
     m_ID{++m_unique_IDs},
@@ -36,6 +36,7 @@ Employee::Employee(const std::string &name, double base_salary, EmployeeRole rol
     }
 }
 
+// operator++() is used in virtual method promote() to promote an employees depending on the type of derived class
 Employee &Employee::operator++() {
     double new_rate;
 
