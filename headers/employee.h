@@ -2,12 +2,13 @@
 #define EMPLOYEE_H
 #include <string>
 #include <iostream>
+#include <atomic>
 #include "status.h"
 #include "salaries.h"
 
 class Employee {
     public:
-        static int m_unique_IDs;
+        static std::atomic<int> m_unique_IDs;
         int m_ID;
         std::string m_name;
         double m_base_salary;
