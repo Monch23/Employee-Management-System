@@ -73,6 +73,4 @@ double PartTime::get_hours_worked(void) const {
     return m_hours_worked;
 }
 
-PartTime::~PartTime() {
-    Employee::~Employee();
-}
+PartTime::~PartTime() {}
